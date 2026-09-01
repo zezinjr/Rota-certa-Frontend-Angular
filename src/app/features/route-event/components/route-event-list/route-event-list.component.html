@@ -1,0 +1,57 @@
+<mat-card class="list-card p-4">
+  <div class="list-header">
+    <h2>Eventos de Rota</h2>
+    <button mat-raised-button color="primary" routerLink="novo">
+      <mat-icon>add</mat-icon>
+      Novo Evento
+    </button>
+  </div>
+
+  <div class="table-wrapper">
+    <table mat-table [dataSource]="events" class="mat-elevation-z1 w-full list-table">
+      <ng-container matColumnDef="route">
+        <th mat-header-cell *matHeaderCellDef>Rota</th>
+        <td mat-cell *matCellDef="let event">{{ getRouteLabel(event.route) }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="event_type">
+        <th mat-header-cell *matHeaderCellDef>Tipo</th>
+        <td mat-cell *matCellDef="let event">{{ getEventTypeLabel(event.event_type) }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Descrição</th>
+        <td mat-cell *matCellDef="let event">{{ event.description }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="timestamp">
+        <th mat-header-cell *matHeaderCellDef>Data/Hora</th>
+        <td mat-cell *matCellDef="let event">{{ event.timestamp | date:'short' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let event">
+          <button mat-icon-button [routerLink]="[event.id, 'editar']">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteEvent(event.id!)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <mat-paginator
+    [length]="totalCount"
+    [pageIndex]="pageIndex"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    showFirstLastButtons
+    (page)="onPageChange($event)">
+  </mat-paginator>
+</mat-card>

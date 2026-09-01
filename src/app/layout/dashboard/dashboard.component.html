@@ -1,0 +1,159 @@
+<div class="dashboard-container">
+
+  <!-- Header -->
+  <div class="page-header">
+    <div>
+      <h1>Visão geral</h1>
+      <span class="date">{{ currentDate }}</span>
+    </div>
+  </div>
+
+  <!-- Cards de Estatísticas -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span>veículos ativos</span>
+      <h2>4</h2>
+      <small>6 disponíveis</small>
+    </div>
+
+    <div class="stat-card">
+      <span>confirmados hoje</span>
+      <h2>47</h2>
+      <small class="green">+ 3 mais que ontem</small>
+    </div>
+
+    <div class="stat-card">
+      <span>com atraso</span>
+      <h2>1</h2>
+      <small>rota Sul · +10 min</small>
+    </div>
+
+    <div class="stat-card">
+      <span>taxa de presença</span>
+      <h2 class="green-text">94%</h2>
+      <small class="green">↑ melhor do mês</small>
+    </div>
+  </div>
+
+  <!-- Grid Principal -->
+  <div class="dashboard-grid">
+
+    <!-- Coluna Esquerda -->
+    <div class="left-column">
+
+      <!-- Ocupação por Rota -->
+      <div class="panel">
+        <div class="panel-header">
+          <h3>Ocupação por rota — hoje</h3>
+          <span>passageiros confirmados</span>
+        </div>
+
+        <div class="routes-line">
+          <div class="route-item"><div class="line"></div><span>Norte</span></div>
+          <div class="route-item"><div class="line"></div><span>Sul</span></div>
+          <div class="route-item"><div class="line"></div><span>Leste</span></div>
+          <div class="route-item"><div class="line"></div><span>Oeste</span></div>
+          <div class="route-item"><div class="line"></div><span>Centro</span></div>
+        </div>
+      </div>
+
+      <!-- Status dos Veículos -->
+      <div class="panel">
+        <div class="panel-header">
+          <h3>Status dos veículos</h3>
+          <span>atualizado há 30s</span>
+        </div>
+
+        <!-- Van Rota Norte -->
+        <div class="vehicle-card">
+          <div class="vehicle-top">
+            <div>
+              <h4>Van Rota Norte</h4>
+              <small>ABC-1234 · 15 lugares</small>
+            </div>
+            <div class="badge success">em rota</div>
+          </div>
+          <div class="progress-label">Parada atual: R. das Flores</div>
+          <mat-progress-bar mode="determinate" value="65"></mat-progress-bar>
+        </div>
+
+        <!-- Ônibus Rota Sul -->
+        <div class="vehicle-card">
+          <div class="vehicle-top">
+            <div>
+              <h4>Ônibus Rota Sul</h4>
+              <small>DEF-5678 · 30 lugares</small>
+            </div>
+            <div class="badge warning">atrasado</div>
+          </div>
+          <div class="progress-label">Parada atual: Terminal Sul</div>
+          <mat-progress-bar mode="determinate" value="30" color="warn"></mat-progress-bar>
+        </div>
+
+        <!-- Van Rota Leste -->
+        <div class="vehicle-card">
+          <div class="vehicle-top">
+            <div>
+              <h4>Van Rota Leste</h4>
+              <small>GHI-9012 · 15 lugares</small>
+            </div>
+            <div class="badge success">em rota</div>
+          </div>
+          <div class="progress-label">Parada atual: Av. Leste 200</div>
+          <mat-progress-bar mode="determinate" value="80"></mat-progress-bar>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Coluna Direita -->
+    <div class="right-column">
+
+      <!-- Mapa ao Vivo -->
+      <div class="panel">
+        <div class="panel-header">
+          <h3>Mapa ao vivo</h3>
+        </div>
+        <div class="fake-map">
+          <div class="grid"></div>
+          <div class="map-point yellow"></div>
+          <div class="map-point blue one"></div>
+          <div class="map-point blue two"></div>
+        </div>
+      </div>
+
+      <!-- Alertas Recentes -->
+      <div class="panel">
+        <div class="panel-header">
+          <h3>Alertas recentes</h3>
+        </div>
+
+        <div class="alert-item">
+          <mat-icon color="warn">warning</mat-icon>
+          <div>
+            <strong>Rota Sul com atraso</strong>
+            <span>há 5 min</span>
+          </div>
+        </div>
+
+        <div class="alert-item">
+          <mat-icon class="success-icon">check_circle</mat-icon>
+          <div>
+            <strong>Rota Norte concluída</strong>
+            <span>ontem · 18:15</span>
+          </div>
+        </div>
+
+        <div class="alert-item">
+          <mat-icon>person</mat-icon>
+          <div>
+            <strong>12 funcionários sem confirmação</strong>
+            <span>hoje · prazo 08:30</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

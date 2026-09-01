@@ -1,0 +1,142 @@
+/* ====================== TOPBAR ====================== */
+.topbar {
+  background-color: #1e40af;
+  color: white;
+  height: 64px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.logo-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #3b82f6;
+  border-radius: 50%;
+}
+
+.topbar-menu {
+  display: flex;
+  gap: 8px;
+}
+
+.topbar-menu button {
+  color: #dbeafe;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 6px;
+}
+
+.topbar-menu button.active,
+.topbar-menu button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.topbar-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.user-role {
+  font-size: 0.75rem;
+  color: #bfdbfe;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ====================== LAYOUT ====================== */
+.layout-container {
+  height: calc(100vh - 64px);
+  background-color: #0f172a;
+}
+
+.sidebar {
+  width: 260px;
+  background-color: #0f172a;
+  border-right: 1px solid #1e2937;
+  padding: 16px 8px;
+  color: #e2e8f0;
+}
+
+.menu-section {
+  margin-bottom: 24px;
+}
+
+.menu-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  padding: 0 16px 8px 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  margin: 2px 8px;
+  border-radius: 8px;
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.menu-item:hover {
+  background-color: #1e2937;
+}
+
+.menu-item.active {
+  background-color: #1e40af;
+  color: white;
+}
+
+.menu-item mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+/* ====================== CONTEÚDO ====================== */
+.content {
+  padding: 24px;
+  background-color: #0f172a;
+  height: 100%;
+  overflow-y: auto;
+  color: #e2e8f0;
+}

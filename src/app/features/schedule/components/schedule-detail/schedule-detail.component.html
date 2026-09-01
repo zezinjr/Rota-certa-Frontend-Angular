@@ -1,0 +1,33 @@
+<mat-card class="p-6 max-w-2xl mx-auto">
+  <mat-card-header>
+    <mat-card-title>{{ isEdit ? 'Editar' : 'Novo' }} Horário</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="form" class="flex flex-col gap-4 mt-4">
+      <mat-form-field>
+        <mat-label>ID da Empresa</mat-label>
+        <input matInput type="number" formControlName="company" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Dias da semana</mat-label>
+        <input matInput formControlName="weekdays" placeholder="MON,TUE,WED,THU,FRI" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Hora</mat-label>
+        <input matInput type="time" formControlName="time" required>
+      </mat-form-field>
+
+      <mat-checkbox formControlName="is_active">Ativo</mat-checkbox>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions class="flex justify-end gap-3 mt-4">
+    <button mat-button (click)="cancel()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="save()" [disabled]="form.invalid">
+      {{ isEdit ? 'Atualizar' : 'Salvar' }}
+    </button>
+  </mat-card-actions>
+</mat-card>

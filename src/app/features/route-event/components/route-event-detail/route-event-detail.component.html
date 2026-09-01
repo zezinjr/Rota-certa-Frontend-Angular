@@ -1,0 +1,52 @@
+<mat-card class="p-6 max-w-2xl mx-auto">
+  <mat-card-header>
+    <mat-card-title>{{ isEdit ? 'Editar' : 'Novo' }} Evento de Rota</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="form" class="flex flex-col gap-4 mt-4">
+      <mat-form-field>
+        <mat-label>Rota</mat-label>
+        <mat-select formControlName="route" required>
+          @for (route of routeList; track route.id) {
+            <mat-option [value]="route.id">{{ route.name }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Tipo</mat-label>
+        <mat-select formControlName="event_type">
+          <mat-option value="departure">Saída</mat-option>
+          <mat-option value="stop">Parada</mat-option>
+          <mat-option value="delay">Atraso</mat-option>
+          <mat-option value="arrival">Chegada</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Descrição</mat-label>
+        <input matInput formControlName="description" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Latitude</mat-label>
+        <input matInput formControlName="latitude" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Longitude</mat-label>
+        <input matInput formControlName="longitude" required>
+      </mat-form-field>
+
+      <mat-checkbox formControlName="is_active">Ativo</mat-checkbox>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions class="flex justify-end gap-3 mt-4">
+    <button mat-button (click)="cancel()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="save()" [disabled]="form.invalid">
+      {{ isEdit ? 'Atualizar' : 'Salvar' }}
+    </button>
+  </mat-card-actions>
+</mat-card>

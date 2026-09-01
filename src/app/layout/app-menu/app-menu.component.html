@@ -1,0 +1,95 @@
+<mat-toolbar class="topbar">
+  <div class="topbar-left">
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <div class="logo">
+      <div class="logo-dot"></div>
+      <span>Rotacerta</span>
+    </div>
+  </div>
+
+  <div class="topbar-menu">
+    <button mat-button routerLink="/dashboard" routerLinkActive="active">Dashboard</button>
+    <button mat-button routerLink="/veiculos" routerLinkActive="active">Veículos</button>
+    <button mat-button routerLink="/rotas" routerLinkActive="active">Rotas</button>
+    <button mat-button routerLink="/funcionarios" routerLinkActive="active">Funcionários</button>
+    <button mat-button routerLink="/relatorios" routerLinkActive="active">Relatórios</button>
+  </div>
+
+  <div class="topbar-user">
+    <div>
+      <div class="user-name">Maria Gestora</div>
+      <div class="user-role">Gerente de RH</div>
+    </div>
+    <div class="avatar">MG</div>
+  </div>
+</mat-toolbar>
+
+<mat-drawer-container class="layout-container">
+
+  <!-- MENU LATERAL -->
+  <mat-drawer #drawer opened="true" mode="side" class="sidebar">
+
+    <div class="menu-section">
+      <div class="menu-title">PRINCIPAL</div>
+      <a mat-list-item routerLink="/dashboard" class="menu-item" routerLinkActive="active">
+        <mat-icon>dashboard</mat-icon>
+        <span>   Dashboard</span>
+      </a>
+      <a mat-list-item routerLink="/mapa" class="menu-item" routerLinkActive="active">
+        <mat-icon>near_me</mat-icon>
+        <span>    Mapa ao vivo</span>
+      </a>
+
+    </div>
+
+    <div class="menu-section">
+      <div class="menu-title">GESTÃO</div>
+      <a mat-list-item routerLink="/company" class="menu-item" routerLinkActive="active">
+      <mat-icon>business</mat-icon>
+      <span>  Empresas</span>
+      </a>
+      <a mat-list-item routerLink="/funcionarios" class="menu-item" routerLinkActive="active">
+        <mat-icon>groups</mat-icon>
+        <span>  Funcionários</span>
+      </a>
+      <a mat-list-item routerLink="/veiculos" class="menu-item" routerLinkActive="active">
+        <mat-icon>directions_bus</mat-icon>
+        <span>    Veículos</span>
+      </a>
+      <a mat-list-item routerLink="/rotas" class="menu-item" routerLinkActive="active">
+        <mat-icon>route</mat-icon>
+        <span>    Rotas</span>
+      </a>
+      <a mat-list-item routerLink="/horarios" class="menu-item" routerLinkActive="active">
+        <mat-icon>schedule</mat-icon>
+        <span>    Horários</span>
+      </a>
+      <a mat-list-item routerLink="/eventos-rota" class="menu-item" routerLinkActive="active">
+        <mat-icon>timeline</mat-icon>
+        <span>    Eventos de Rota</span>
+      </a>
+      <a mat-list-item routerLink="/relatorios" class="menu-item" routerLinkActive="active">
+        <mat-icon>description</mat-icon>
+        <span>    Relatórios</span>
+      </a>
+    </div>
+
+    <div class="menu-section">
+      <div class="menu-title">CONFIG</div>
+      <a mat-list-item routerLink="/configuracoes" class="menu-item" routerLinkActive="active">
+        <mat-icon>settings</mat-icon>
+        <span>    Configurações</span>
+      </a>
+    </div>
+
+  </mat-drawer>
+
+  <!-- CONTEÚDO -->
+  <mat-drawer-content class="content">
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+
+</mat-drawer-container>

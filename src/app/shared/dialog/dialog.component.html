@@ -1,0 +1,9 @@
+<mat-dialog-content>
+  <strong>{{data?.message }}</strong>
+  <p class="mt-3">{{data?.description }}</p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-flat-button color="warn" (click)="onConfirm()">Deletar</button>
+</mat-dialog-actions>

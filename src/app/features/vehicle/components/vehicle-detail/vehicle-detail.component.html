@@ -1,0 +1,51 @@
+<mat-card class="p-6 max-w-2xl mx-auto">
+  <mat-card-header>
+    <mat-card-title>{{ isEdit ? 'Editar' : 'Novo' }} Veículo</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="form" class="flex flex-col gap-4 mt-4">
+      <mat-form-field>
+        <mat-label>Empresa</mat-label>
+        <mat-select formControlName="company" required>
+          @for (company of companyList; track company.id) {
+            <mat-option [value]="company.id">{{ company.name }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Motorista</mat-label>
+        <mat-select formControlName="driver" required>
+          @for (driver of driverList; track driver.id) {
+            <mat-option [value]="driver.id">{{ getDriverLabel(driver) }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Placa</mat-label>
+        <input matInput formControlName="plate_number" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Modelo</mat-label>
+        <input matInput formControlName="model" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Capacidade</mat-label>
+        <input matInput type="number" formControlName="capacity" required>
+      </mat-form-field>
+
+      <mat-checkbox formControlName="is_active">Ativo</mat-checkbox>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions class="flex justify-end gap-3 mt-4">
+    <button mat-button (click)="cancel()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="save()" [disabled]="form.invalid">
+      {{ isEdit ? 'Atualizar' : 'Salvar' }}
+    </button>
+  </mat-card-actions>
+</mat-card>
