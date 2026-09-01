@@ -1,59 +1,451 @@
-# CrudAngularMaterial
+# 🚗 Rota Certa — Frontend Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.2.
+Aplicação web desenvolvida em **Angular** para gerenciamento e acompanhamento de rotas, pessoas, empresas e informações relacionadas à operação do sistema **Rota Certa**.
 
-## Development server
+O projeto foi estruturado seguindo uma arquitetura modular, com separação entre funcionalidades, componentes compartilhados, infraestrutura da aplicação e elementos de layout.
 
-To start a local development server, run:
+> **Status:** 🚧 Em desenvolvimento
+
+---
+
+## 📋 Sobre o projeto
+
+O **Rota Certa Frontend** é a camada de apresentação de uma aplicação web voltada ao gerenciamento de informações relacionadas a rotas e operações logísticas.
+
+A aplicação utiliza **Angular 19** e uma arquitetura baseada em componentes, permitindo organizar as funcionalidades em módulos independentes e facilitar a manutenção e evolução do sistema.
+
+O frontend foi desenvolvido para consumir uma API REST responsável pelo processamento e persistência dos dados da aplicação.
+
+### 🎯 Objetivos
+
+* Disponibilizar uma interface web para gerenciamento das informações do sistema;
+* Centralizar operações relacionadas às rotas;
+* Facilitar o gerenciamento de pessoas e empresas;
+* Organizar funcionalidades por domínio;
+* Manter uma arquitetura escalável e de fácil manutenção;
+* Integrar o frontend com uma API REST;
+* Fornecer uma experiência consistente através de componentes reutilizáveis.
+
+---
+
+## 🛠️ Tecnologias utilizadas
+
+| Tecnologia              | Utilização                            |
+| ----------------------- | ------------------------------------- |
+| **Angular 19**          | Framework principal                   |
+| **TypeScript 5.6**      | Linguagem de desenvolvimento          |
+| **Angular Material 19** | Componentes e interface               |
+| **Angular CDK 19**      | Recursos de construção de componentes |
+| **PrimeFlex 4**         | Sistema de utilitários CSS            |
+| **RxJS 7.8**            | Programação reativa                   |
+| **SCSS**                | Estilização                           |
+| **Angular Router**      | Navegação da aplicação                |
+| **Angular Forms**       | Formulários e gerenciamento de dados  |
+| **Jasmine / Karma**     | Testes unitários                      |
+| **Angular CLI 19**      | Desenvolvimento e build               |
+
+---
+
+## 🏗️ Arquitetura
+
+O projeto utiliza uma organização baseada em responsabilidades:
+
+```text
+src/
+├── app/
+│   ├── core/
+│   ├── features/
+│   ├── layout/
+│   ├── shared/
+│   │
+│   ├── app.component.html
+│   ├── app.component.scss
+│   ├── app.component.ts
+│   ├── app.config.ts
+│   ├── app.routes.ts
+│   └── app.urls.ts
+│
+├── assets/
+├── environments/
+│
+├── index.html
+├── main.ts
+└── styles.scss
+```
+
+### `core/`
+
+Responsável pelos recursos centrais da aplicação.
+
+Normalmente concentra elementos que possuem escopo global, como:
+
+* Serviços;
+* Guards;
+* Interceptors;
+* Configurações;
+* Modelos;
+* Recursos relacionados à infraestrutura.
+
+---
+
+### `features/`
+
+Representa os principais domínios e funcionalidades da aplicação.
+
+A separação por `features` permite que cada área do sistema possua seus próprios componentes, serviços e regras, reduzindo o acoplamento entre funcionalidades.
+
+Exemplo conceitual:
+
+```text
+features/
+├── companies/
+├── people/
+├── routes/
+└── ...
+```
+
+---
+
+### `layout/`
+
+Concentra os componentes responsáveis pela estrutura visual da aplicação.
+
+Exemplos:
+
+* Menu;
+* Header;
+* Sidebar;
+* Containers;
+* Layout administrativo;
+* Elementos estruturais da interface.
+
+---
+
+### `shared/`
+
+Área destinada a componentes e recursos reutilizáveis em diferentes partes da aplicação.
+
+Exemplos:
+
+* Componentes genéricos;
+* Pipes;
+* Diretivas;
+* Componentes de formulário;
+* Elementos visuais compartilhados.
+
+---
+
+## 🔄 Comunicação com a API
+
+O frontend foi estruturado para trabalhar com uma **API REST**, mantendo a camada de apresentação separada das regras de negócio e persistência.
+
+Fluxo simplificado:
+
+```text
+┌─────────────────────┐
+│      Usuário        │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Angular Frontend    │
+│                     │
+│ Components          │
+│ Features            │
+│ Services            │
+└──────────┬──────────┘
+           │ HTTP
+           ▼
+┌─────────────────────┐
+│      REST API       │
+│                     │
+│ Backend / Django    │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│      Database       │
+└─────────────────────┘
+```
+
+Essa separação permite que frontend e backend evoluam de maneira independente.
+
+---
+
+## 📦 Pré-requisitos
+
+Antes de executar o projeto, certifique-se de possuir:
+
+* **Node.js**
+* **npm**
+* **Angular CLI 19**
+
+Verifique as versões instaladas:
+
+```bash
+node --version
+npm --version
+ng version
+```
+
+---
+
+## 🚀 Instalação
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/RaybrendoT/Rota-certa-Frontend-Angular.git
+```
+
+Entre no diretório:
+
+```bash
+cd Rota-certa-Frontend-Angular
+```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+---
+
+## ▶️ Executando em desenvolvimento
+
+Inicie o servidor Angular:
+
+```bash
+npm start
+```
+
+ou:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Depois acesse:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```text
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+O Angular CLI disponibiliza atualização automática durante o desenvolvimento.
+
+---
+
+## 🏭 Build de produção
+
+Para gerar a versão de produção:
 
 ```bash
-ng generate --help
+npm run build
 ```
 
-## Building
-
-To build the project run:
+ou:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Os arquivos compilados serão disponibilizados no diretório:
 
-## Running unit tests
+```text
+dist/
+```
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+---
+
+## 🧪 Testes
+
+Para executar os testes unitários:
+
+```bash
+npm test
+```
+
+ou:
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+O projeto utiliza:
 
-For end-to-end (e2e) testing, run:
+* Jasmine;
+* Karma;
+* Angular Testing Utilities.
+
+---
+
+## 🔧 Scripts disponíveis
+
+Os principais scripts definidos no projeto são:
 
 ```bash
-ng e2e
+npm start
+npm run build
+npm run watch
+npm test
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### Desenvolvimento
 
-## Additional Resources
+```bash
+npm start
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Build
+
+```bash
+npm run build
+```
+
+### Build com observação de alterações
+
+```bash
+npm run watch
+```
+
+### Testes
+
+```bash
+npm test
+```
+
+---
+
+## 🌎 Configuração de ambientes
+
+As configurações específicas de ambiente ficam organizadas em:
+
+```text
+src/environments/
+```
+
+Essa abordagem permite separar configurações de desenvolvimento, homologação e produção.
+
+Exemplo conceitual:
+
+```typescript
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:8000/api'
+};
+```
+
+> ⚠️ Ajuste os valores de acordo com o ambiente utilizado e com a configuração da API.
+
+---
+
+## 🔐 Boas práticas
+
+O projeto segue uma estrutura que favorece:
+
+* Separação de responsabilidades;
+* Componentização;
+* Reutilização de código;
+* Organização por domínio;
+* Centralização de configurações;
+* Uso de serviços para comunicação HTTP;
+* Separação entre layout e funcionalidades;
+* Tipagem através do TypeScript.
+
+---
+
+## 📁 Organização recomendada
+
+À medida que o projeto crescer, recomenda-se manter a seguinte responsabilidade:
+
+```text
+core/
+└── Recursos globais da aplicação
+
+features/
+└── Regras e funcionalidades específicas de cada domínio
+
+layout/
+└── Estrutura visual da aplicação
+
+shared/
+└── Recursos reutilizáveis
+
+environments/
+└── Configurações por ambiente
+```
+
+Essa organização evita transformar o projeto em uma estrutura baseada apenas em tipos técnicos, como:
+
+```text
+components/
+services/
+models/
+pages/
+```
+
+e favorece uma arquitetura orientada às funcionalidades.
+
+---
+
+## 🔗 Projeto relacionado
+
+O frontend faz parte do ecossistema do **Rota Certa**, sendo responsável pela camada de interface da aplicação.
+
+### Frontend
+
+**Rota Certa — Angular**
+
+https://github.com/RaybrendoT/Rota-certa-Frontend-Angular
+
+### Backend
+
+**Rota Certa — Django**
+
+https://github.com/RaybrendoT/Rota-certa-Backend-Django
+
+---
+
+## 📌 Roadmap
+
+* [x] Estrutura inicial Angular
+* [x] Angular Material
+* [x] Organização por `core`, `features`, `layout` e `shared`
+* [x] Configuração de ambientes
+* [x] Configuração de rotas
+* [ ] Integração completa com API
+* [ ] Autenticação e autorização
+* [ ] Dashboard operacional
+* [ ] Gerenciamento de rotas
+* [ ] Gerenciamento de pessoas
+* [ ] Gerenciamento de empresas
+* [ ] Relatórios
+* [ ] Testes automatizados ampliados
+* [ ] Pipeline CI/CD
+
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido por **Raybrendo Trindade** e **José Eduardo**.
+
+GitHub:
+
+https://github.com/RaybrendoT https://github.com/zezinjr
+
+---
+
+## 📄 Licença
+
+Este projeto não possui uma licença open source definida atualmente.
+
+Caso o projeto seja disponibilizado para uso, distribuição ou contribuição externa, recomenda-se definir uma licença apropriada, como **MIT**, conforme os objetivos do projeto.
+
+---
+
+## ⭐ Considerações
+
+O **Rota Certa Frontend** foi desenvolvido utilizando Angular e uma arquitetura modular com foco em organização, reutilização e evolução contínua.
+
+O projeto está em desenvolvimento e sua estrutura pode evoluir conforme novas funcionalidades e integrações sejam adicionadas.
