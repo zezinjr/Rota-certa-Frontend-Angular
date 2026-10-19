@@ -1,0 +1,8 @@
+<resources>
+    <!-- Janela no tema escuro do painel; as cores das telas vêm do RotaCertaTheme (Compose). -->
+    <style name="Theme.RotaCerta" parent="android:Theme.Material.NoActionBar">
+        <item name="android:statusBarColor">@color/rc_topbar</item>
+        <item name="android:navigationBarColor">@color/rc_background</item>
+        <item name="android:windowBackground">@color/rc_background</item>
+    </style>
+</resources>
