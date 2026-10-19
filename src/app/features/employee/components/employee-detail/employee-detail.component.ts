@@ -209,7 +209,7 @@ export class EmployeeDetailComponent implements OnInit {
       company: companyId,
     } as any;
 
-    if (type === 'EMPLOYEE') {
+    if (type === 'EMPLOYEE' || type === 'MANAGER') {
       payload.license_number = null;
     } else if (type === 'DRIVER') {
       payload.employee_code = null;

@@ -102,7 +102,8 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
     const normalizedType = String(type ?? '').trim().toUpperCase();
     const labels: Record<string, string> = {
       EMPLOYEE: 'Funcionário',
-      DRIVER: 'Motorista'
+      DRIVER: 'Motorista',
+      MANAGER: 'Gestor'
     };
 
     return labels[normalizedType] ?? '-';

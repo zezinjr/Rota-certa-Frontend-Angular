@@ -1,4 +1,4 @@
-export type PersonType = 'DRIVER' | 'EMPLOYEE';
+export type PersonType = 'DRIVER' | 'EMPLOYEE' | 'MANAGER';
 
 export interface CompanyRef {
   id?: number;
