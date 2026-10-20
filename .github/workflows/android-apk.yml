@@ -50,6 +50,9 @@ jobs:
       - name: Gerar APK (debug)
         env:
           API_BASE_URL: ${{ github.event.inputs.api_base_url }}
+          # Chave do Google Maps (Settings → Secrets → Actions → MAPS_API_KEY).
+          # Sem o secret, o APK usa o mapa esquemático no lugar do Google Maps.
+          MAPS_API_KEY: ${{ secrets.MAPS_API_KEY }}
         run: |
           ARGS=""
           if [ -n "$API_BASE_URL" ]; then
