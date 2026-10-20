@@ -31,12 +31,13 @@
         <mat-select formControlName="type">
           <mat-option value="EMPLOYEE">Funcionário</mat-option>
           <mat-option value="DRIVER">Motorista</mat-option>
+          <mat-option value="MANAGER">Gestor</mat-option>
         </mat-select>
       </mat-form-field>
 
       <!-- Código do Funcionário -->
-      <mat-form-field *ngIf="form.get('type')?.value === 'EMPLOYEE'">
-        <mat-label>Código do Funcionário</mat-label>
+      <mat-form-field *ngIf="form.get('type')?.value === 'EMPLOYEE' || form.get('type')?.value === 'MANAGER'">
+        <mat-label>Matrícula</mat-label>
         <input matInput formControlName="employee_code" required>
       </mat-form-field>
 

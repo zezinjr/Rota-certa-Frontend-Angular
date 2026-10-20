@@ -1,10 +1,26 @@
 import { Routes } from '@angular/router';
 import {AppMenuComponent} from './layout/app-menu/app-menu.component';
+import {authGuard, guestGuard, loggedInGuard} from './core/auth/auth.guards';
 
 export const routes: Routes = [
   {
+    path: 'login',
+    canActivate: [guestGuard],
+    loadComponent: () =>
+      import('./features/auth/login/login.component').then(c => c.LoginComponent),
+  },
+  {
+    path: 'trocar-senha',
+    canActivate: [loggedInGuard],
+    loadComponent: () =>
+      import('./features/auth/change-password/change-password.component').then(c => c.ChangePasswordComponent),
+  },
+  {
     path: '',
     component: AppMenuComponent,
+    // Todo o painel exige gestor logado (o backend responde 401/403 sem token de gestor).
+    canActivate: [authGuard],
+    canActivateChild: [authGuard],
     children: [
       {
         path: 'dashboard',

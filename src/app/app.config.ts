@@ -7,6 +7,7 @@ import { ConfigService } from './core/services/config.service';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { DeduplicateRequestsInterceptor } from './core/interceptors/deduplicate-requests.interceptor';
+import { AuthInterceptor } from './core/auth/auth.interceptor';
 
 export function getPaginatorIntl(): MatPaginatorIntl {
   const paginatorIntl = new MatPaginatorIntl();
@@ -41,6 +42,7 @@ export const appConfig: ApplicationConfig = {
       return configService.loadConfig();
     }),
     { provide: MatPaginatorIntl, useValue: getPaginatorIntl() },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: DeduplicateRequestsInterceptor, multi: true },
     provideRouter(routes)
   ]

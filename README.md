@@ -172,6 +172,22 @@ Essa separação permite que frontend e backend evoluam de maneira independente.
 
 ---
 
+## 🔑 Login de gestor
+
+O painel exige login. Só pessoas do tipo **Gestor** (`MANAGER`) entram; colaboradores e motoristas usam os apps.
+
+- A tela `/login` usa `POST /api/auth/login/` do backend. O token fica salvo no navegador e o `AuthInterceptor` o envia em todas as chamadas à API (`Authorization: Bearer ...`).
+- Quando o token expira, o interceptor o renova sozinho; se não conseguir, volta para o login.
+- No primeiro acesso, o gestor é levado para `/trocar-senha`. A troca também fica disponível no menu **Alterar senha**.
+- Para ter um gestor:
+  - em ambiente de demonstração, o seed `seed_manaus_demo` do backend cria `gst001@polodigitalmanaus.com` (senha inicial = `ACCESS_ACCOUNT_AUTO_INITIAL_PASSWORD`);
+  - num banco novo, crie o primeiro com `python manage.py create_manager ...`;
+  - depois, um gestor pode cadastrar outros em **Funcionários → Novo**, tipo **Gestor**.
+
+Arquivos: `src/app/core/auth/` (serviço, interceptor e guards) e `src/app/features/auth/` (telas de login e troca de senha).
+
+---
+
 ## 📦 Pré-requisitos
 
 Antes de executar o projeto, certifique-se de possuir:

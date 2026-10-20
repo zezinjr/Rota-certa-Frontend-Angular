@@ -20,10 +20,13 @@
 
   <div class="topbar-user">
     <div>
-      <div class="user-name">Maria Gestora</div>
-      <div class="user-role">Gerente de RH</div>
+      <div class="user-name">{{ person()?.name }}</div>
+      <div class="user-role">Gestor · {{ person()?.company_name }}</div>
     </div>
-    <div class="avatar">MG</div>
+    <div class="avatar">{{ initials() }}</div>
+    <button mat-icon-button (click)="logout()" matTooltip="Sair" aria-label="Sair">
+      <mat-icon>logout</mat-icon>
+    </button>
   </div>
 </mat-toolbar>
 
@@ -82,6 +85,10 @@
       <a mat-list-item routerLink="/configuracoes" class="menu-item" routerLinkActive="active">
         <mat-icon>settings</mat-icon>
         <span>    Configurações</span>
+      </a>
+      <a mat-list-item routerLink="/trocar-senha" class="menu-item">
+        <mat-icon>lock</mat-icon>
+        <span>    Alterar senha</span>
       </a>
     </div>
 
