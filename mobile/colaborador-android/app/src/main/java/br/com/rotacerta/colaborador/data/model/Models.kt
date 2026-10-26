@@ -86,6 +86,8 @@ data class Trip(
     @SerialName("my_stop") val myStop: StopInfo? = null,
     val stops: List<StopInfo> = emptyList(),
     val destination: AddressInfo? = null,
+    /** Trajeto calculado pelo backend: pelas ruas (Google) ou linha reta entre as paradas. */
+    val path: TripPath? = null,
     val schedules: List<ScheduleInfo> = emptyList(),
     @SerialName("last_position") val lastPosition: Position? = null,
     val events: List<TripEvent> = emptyList(),
@@ -149,4 +151,58 @@ enum class RouteStatus {
     @SerialName("waiting") WAITING,
     @SerialName("in_route") IN_ROUTE,
     @SerialName("delayed") DELAYED,
+}
+
+// ---- Acompanhamento ao vivo (/api/me/trips/{id}/live/) ----
+
+@Serializable
+data class LiveStatus(
+    @SerialName("trip_id") val tripId: Long,
+    @SerialName("is_live") val isLive: Boolean = false,
+    val phase: LivePhase = LivePhase.WAITING,
+    val vehicle: LiveVehicle? = null,
+    val eta: LiveEta? = null,
+    @SerialName("next_stop_sequence") val nextStopSequence: Int? = null,
+    @SerialName("path_progress") val pathProgress: PathProgress? = null,
+)
+
+@Serializable
+data class LiveVehicle(
+    val latitude: Double,
+    val longitude: Double,
+    val heading: Double? = null,
+    val speed: Double? = null,
+    @SerialName("age_seconds") val ageSeconds: Int = 0,
+)
+
+@Serializable
+data class LiveEta(
+    val minutes: Int,
+    @SerialName("distance_meters") val distanceMeters: Int,
+    @SerialName("stops_before") val stopsBefore: Int,
+)
+
+/** Trajeto da rota em polyline codificada (formato do Google, precisão 5). */
+@Serializable
+data class TripPath(
+    val polyline: String,
+    val source: String = "straight",
+    val version: String? = null,
+)
+
+/** Onde a van está no trajeto: segmento e fração percorrida dele (no trajeto de versão [pathVersion]). */
+@Serializable
+data class PathProgress(
+    val segment: Int,
+    val fraction: Double,
+    @SerialName("path_version") val pathVersion: String? = null,
+)
+
+@Serializable
+enum class LivePhase {
+    @SerialName("waiting") WAITING,
+    @SerialName("approaching") APPROACHING,
+    @SerialName("arriving") ARRIVING,
+    @SerialName("passed") PASSED,
+    @SerialName("at_destination") AT_DESTINATION,
 }
