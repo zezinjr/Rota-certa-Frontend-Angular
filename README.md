@@ -6,6 +6,9 @@ O projeto foi estruturado seguindo uma arquitetura modular, com separação entr
 
 > **Status:** 🚧 Em desenvolvimento
 
+> 📱 O **app Android do colaborador** (Kotlin) fica no repositório
+> [Rota-certa-Frontend-Kotlin](https://github.com/zezinjr/Rota-certa-Frontend-Kotlin).
+
 ---
 
 ## 📋 Sobre o projeto
